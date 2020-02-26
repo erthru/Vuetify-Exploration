@@ -3,7 +3,7 @@
     <v-content>
       <v-container class="mt-2">
         <v-row justify="center">
-          <v-col cols="8">
+          <v-col cols="md-8 xs-1">
             <v-alert type="warning" dismissible>
               Api used:
               <a
@@ -11,7 +11,7 @@
                 class="white--text"
                 target="blank"
               >https://reqres.in/api/users</a>
-              <br />Data Table using server side rendering
+              <br />Table using server side rendering
               <br />Reqres.in not provide search, so search not working
             </v-alert>
 

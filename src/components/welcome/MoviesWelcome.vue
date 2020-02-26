@@ -3,7 +3,7 @@
     <v-content>
       <v-container class="mt-2">
         <v-row justify="center">
-          <v-col cols="8">
+          <v-col cols="md-8 xs-1">
             <v-alert type="warning" dismissible>
               Api used:
               <a
@@ -13,13 +13,13 @@
               >http://www.omdbapi.com/</a>
             </v-alert>
 
-            <v-card style="padding: 24px">
+            <v-card class="pa-4">
               <div v-if="!onSearch">
                 <center>
-                  <div class="display-1">Search Movies</div>
+                  <v-col cols="md-6 xs-1">
+                    <div class="display-1">Search Movies</div>
 
-                  <v-col cols="6" class="mt-1">
-                    <v-form lazy-validation ref="form" v-on:submit.prevent="search">
+                    <v-form lazy-validation ref="form" v-on:submit.prevent="search" class="mt-3">
                       <v-text-field
                         v-model="searchVal"
                         placeholder="Ex: Naruto Shippuden"
@@ -35,7 +35,7 @@
                         color="primary"
                         :loading="btnIsLoading"
                         v-on:click="search"
-                      >Search</v-btn>
+                      >Search Movies</v-btn>
                     </v-form>
 
                     <v-alert
@@ -56,7 +56,7 @@
                 </div>
 
                 <v-row class="mt-2">
-                  <v-col cols="4" v-for="item in searchResults" :key="item.imdbID">
+                  <v-col cols="md-4 xs-1" v-for="item in searchResults" :key="item.imdbID">
                     <v-card>
                       <v-img :src="item.Poster" height="200px" />
 
@@ -108,16 +108,7 @@ export default {
   },
   mounted() {
     window.onscroll = () => {
-      let bottomOfWindow =
-        Math.max(
-          window.pageYOffset,
-          document.documentElement.scrollTop,
-          document.body.scrollTop
-        ) +
-          window.innerHeight ===
-        document.documentElement.offsetHeight;
-
-      if (bottomOfWindow) {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
         if (this.searchResults.length < this.searchTotal) {
           this.next();
         }

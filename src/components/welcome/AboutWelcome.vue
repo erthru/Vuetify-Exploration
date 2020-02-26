@@ -3,7 +3,7 @@
     <v-content>
       <v-container class="mt-2">
         <v-row justify="center">
-          <v-col cols="8">
+          <v-col cols="md-8 xs-1">
             <v-alert type="warning" dismissible>
               Api used:
               <a
@@ -13,7 +13,7 @@
               >https://api.github.com/users/erthru</a>
             </v-alert>
 
-            <v-card style="padding: 24px">
+            <v-card class="pa-4">
               <center>
                 <v-progress-circular v-if="avatarIsLoading" color="primary" indeterminate />
 
@@ -94,16 +94,7 @@ export default {
     });
 
     window.onscroll = () => {
-      let bottomOfWindow =
-        Math.max(
-          window.pageYOffset,
-          document.documentElement.scrollTop,
-          document.body.scrollTop
-        ) +
-          window.innerHeight ===
-        document.documentElement.offsetHeight;
-
-      if (bottomOfWindow) {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
         this.page += 1;
 
         if (this.repos.length < this.reposTotal) {
