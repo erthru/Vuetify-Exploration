@@ -79,8 +79,7 @@ export default {
         "https://reqres.in/api/users?page=" +
           props.page +
           "&per_page=" +
-          props.itemsPerPage +
-          "&delay=3"
+          props.itemsPerPage
       ).then(result => {
         result.json().then(response => {
           this.tblUserItemLength = response.total;
